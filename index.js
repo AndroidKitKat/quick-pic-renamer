@@ -32,7 +32,18 @@ app.post('/rename', (req, res) => {
   const old_fileName = req.body.oldname
   file_extension = path.extname(old_fileName)
 
-  fs.renameSync(path.join(__dirname, 'oldnamed', active_page, old_fileName), path.join(__dirname, 'renamed', active_page, new_fileName) + file_extension)
+  var all_files = fs.readdirSync(path.join(__dirname, 'renamed', active_page))
+  console.log(all_files)
+  console.log(active_page)
+
+  var counter = 0
+  for (const f of all_files) {
+    if (f.substr(0, f.lastIndexOf(' ')) === new_fileName) {
+      counter += 1
+    }
+  }
+
+  fs.renameSync(path.join(__dirname, 'oldnamed', active_page, old_fileName), path.join(__dirname, 'renamed', active_page, new_fileName) + " " + counter + file_extension)
   // console.log(`${new_fileName} && ${old_fileName}`)
   res.redirect(302, `/home/${active_page}`)
 });
