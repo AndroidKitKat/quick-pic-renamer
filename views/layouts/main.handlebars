@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="/assets/main.css">
+    <title>Picture Renamer</title>
+</head>
+<body>
+
+    {{{body}}}
+
+    <div class="footer">
+      <div class="footer-container">
+      {{#each renamer.dirs}}
+      <h3>
+        - <a href="/home/{{this.name}}">{{this.name}}</a> - 
+      </h3>
+      {{/each}}
+      </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<div>
+  <div class="rename">
+    <form action="/rename" method="POST">
+      <input id="new_name" type="text" name="newname" placeholder="new photo name" required>
+      <input id="old_name" type="text" name="oldname" value="{{file.name}}" style="display: none;">
+      <input id="active_page" type="text" name="active" value="{{active.page}}" style="display: none;">
+      <input type="submit" value="Rename">
+    </form>
+  </div>
+  <br>
+  <div class="rename">
+    {{#if active.image }}
+    <img class="pitcher" src="/oldnamed/{{active.page}}/{{file.name}}">
+    {{else}}
+    <img class="pitcher" src="https://i.imgur.com/ZGMi6iA.png">
+    {{/if}}
+  </div>
+  <div class="rename">
+    <p>{{file.name}}</p>
+  </div>
+</div>
